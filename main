@@ -1,2 +1,11 @@
 import platform
-print(platform.system())
+import psutil
+from datetime import datetime
+
+def main():
+    print(platform.system())
+    print("Time:", datetime.now().isoformat())
+    print("CPU cores are: ", psutil.cpu_count())
+
+if __name__ == "__main__":
+    main()
