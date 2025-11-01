@@ -2,10 +2,16 @@ import platform
 import psutil
 from datetime import datetime
 
-def main():
+def info_Scan():
+    #takes average CPU use over 1 second.
+    cpu_use = psutil.cpu_percent(1)
+    #Prints the platform user runs it on (Windows in this case)
     print(platform.system())
-    print("Time:", datetime.now().isoformat())
+    #This section prints the Time, number of CPU cores, and cpu use.
+    print("Time:", datetime.now().strftime("%d/%m/%Y, %H:%M:%S"))
     print("CPU cores are: ", psutil.cpu_count())
+    print(f"Currently the cpu is using {cpu_use} of its power!")
 
+#This is to make it run the correct method, will change it to main later.
 if __name__ == "__main__":
-    main()
+    info_Scan()
