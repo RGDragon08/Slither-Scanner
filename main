@@ -1,6 +1,16 @@
 import platform
 import psutil
 from datetime import datetime
+#Global Variables
+cur_Time = datetime.now().strftime("%d/%m/%Y, %H:%M:%S")
+
+def create_File():
+    #with is like auto-upkeep, automatically closing for you when you are done with it.
+    #First quotes are the name of the file, in this case, itll be scan.txt.
+    #w is something called a mode that I beleive is part of the open function, it erases and gernates a new file with
+    #every iteration.
+    with open("scan.txt", "w") as file:
+        pass
 
 def info_Scan():
     #takes average CPU use over 1 second.
@@ -8,10 +18,14 @@ def info_Scan():
     #Prints the platform user runs it on (Windows in this case)
     print(platform.system())
     #This section prints the Time, number of CPU cores, and cpu use.
-    print("Time:", datetime.now().strftime("%d/%m/%Y, %H:%M:%S"))
+    print(f"The date and time is {datetime}")
     print("CPU cores are: ", psutil.cpu_count())
-    print(f"Currently the cpu is using {cpu_use} of its power!")
+    print(f"Currently the cpu is using {cpu_use}% of its power!")
+
+def main():
+    info_Scan()
 
 #This is to make it run the correct method, will change it to main later.
 if __name__ == "__main__":
-    info_Scan()
+    main()
+    create_File()
